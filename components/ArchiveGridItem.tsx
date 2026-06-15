@@ -138,6 +138,40 @@ export default function ArchiveGridItem({
         >
           {story.location}
         </p>
+
+        {/* Reflection (revealed softly on click/active pin state) */}
+        <motion.div
+          initial={false}
+          animate={{
+            height: isOpen ? "auto" : 0,
+            opacity: isOpen ? 1 : 0,
+            marginTop: isOpen ? "0.6rem" : "0px",
+          }}
+          transition={{
+            duration: 0.5,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="overflow-hidden"
+        >
+          <div
+            style={{
+              width: "1.5rem",
+              height: "1px",
+              backgroundColor: "var(--color-still-border)",
+              marginBottom: "0.5rem",
+            }}
+          />
+          <p
+            className="font-cormorant"
+            style={{
+              fontSize: "clamp(0.8rem, 1.2vw, 0.9rem)",
+              lineHeight: 1.5,
+              color: "var(--color-still-muted)",
+            }}
+          >
+            {story.creatorReflection}
+          </p>
+        </motion.div>
       </motion.div>
     </div>
   );

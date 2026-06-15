@@ -38,7 +38,7 @@ const staggerConfigs = [
   { aspectRatio: "2/3", marginTop: "md:mt-12", width: "w-10/12 md:mx-auto" },
   { aspectRatio: "4/5", marginTop: "md:mt-6", width: "w-full" },
   // 24
-  { aspectRatio: "1/1", marginTop: "md:mt-10", width: "w-11/12 md:mr-auto" },
+  { aspectRatio: "1/1", marginTop: "md:mt-10", width: "w-full md:w-11/12 md:mx-auto lg:w-10/12 sm:col-span-2 md:col-span-1 md:col-start-2 lg:col-span-2 lg:col-start-2" },
 ];
 
 export default function ArchiveWall() {
@@ -103,7 +103,7 @@ export default function ArchiveWall() {
             marginTop: "0.75rem",
           }}
         >
-          Twenty-Four Moments · Quietly Observed
+          Twenty-Five Moments · Quietly Observed
         </p>
 
         {/* Thin Rule */}
