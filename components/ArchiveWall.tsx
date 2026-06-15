@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { archiveStories } from "@/data/stories";
 import ArchiveGridItem from "@/components/ArchiveGridItem";
@@ -8,6 +8,43 @@ import ArchiveLightbox from "@/components/ArchiveLightbox";
 
 export default function ArchiveWall() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [numCols, setNumCols] = useState(4);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const updateCols = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setNumCols(1);
+      } else if (width < 768) {
+        setNumCols(2);
+      } else if (width < 1024) {
+        setNumCols(3);
+      } else {
+        setNumCols(4);
+      }
+    };
+    updateCols();
+    window.addEventListener("resize", updateCols);
+    return () => window.removeEventListener("resize", updateCols);
+  }, []);
+
+  // Distribute stories across N columns for client-side rendering
+  const columns = Array.from({ length: numCols }, (_, i) =>
+    archiveStories
+      .map((story, originalIndex) => ({ story, originalIndex }))
+      .filter((_, idx) => idx % numCols === i)
+  );
+
+  const gridColsClass =
+    numCols === 1
+      ? "grid-cols-1"
+      : numCols === 2
+      ? "grid-cols-2"
+      : numCols === 3
+      ? "grid-cols-3"
+      : "grid-cols-4";
 
   return (
     <main
@@ -83,15 +120,34 @@ export default function ArchiveWall() {
             padding: "clamp(2rem, 6vw, 4rem) clamp(1.5rem, 6vw, 5rem)",
           }}
         >
-          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 [column-fill:_auto]">
-            {archiveStories.map((story, index) => (
-              <ArchiveGridItem
-                key={story.id}
-                story={story}
-                onClick={() => setLightboxIndex(index)}
-              />
-            ))}
-          </div>
+          {!mounted ? (
+            // SSR Fallback: standard columns layout to ensure search engines see content immediately
+            <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6">
+              {archiveStories.map((story, index) => (
+                <div key={story.id} className="mb-6 break-inside-avoid">
+                  <ArchiveGridItem
+                    story={story}
+                    onClick={() => setLightboxIndex(index)}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            // Client-Side: Grid of Flex columns to prevent column-jumping and ensure balanced masonry layout
+            <div className={`grid ${gridColsClass} gap-6 items-start`}>
+              {columns.map((col, colIdx) => (
+                <div key={colIdx} className="flex flex-col gap-6">
+                  {col.map(({ story, originalIndex }) => (
+                    <ArchiveGridItem
+                      key={story.id}
+                      story={story}
+                      onClick={() => setLightboxIndex(originalIndex)}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

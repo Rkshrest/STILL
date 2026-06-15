@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Story } from "@/data/stories";
 
@@ -18,6 +18,8 @@ export default function ArchiveLightbox({
   onChangeIndex,
 }: ArchiveLightboxProps) {
   const activeStory = stories[currentIndex];
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [imageWidth, setImageWidth] = useState<number | null>(null);
 
   const handleNext = () => {
     onChangeIndex((currentIndex + 1) % stories.length);
@@ -26,6 +28,31 @@ export default function ArchiveLightbox({
   const handlePrev = () => {
     onChangeIndex((currentIndex - 1 + stories.length) % stories.length);
   };
+
+  // Reset and measure width when the active slide changes
+  useEffect(() => {
+    setImageWidth(null);
+    if (imgRef.current && imgRef.current.complete) {
+      setImageWidth(imgRef.current.clientWidth);
+    }
+  }, [currentIndex]);
+
+  const handleImageLoad = () => {
+    if (imgRef.current) {
+      setImageWidth(imgRef.current.clientWidth);
+    }
+  };
+
+  // Re-measure on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (imgRef.current) {
+        setImageWidth(imgRef.current.clientWidth);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Keyboard navigation
   useEffect(() => {
@@ -128,16 +155,23 @@ export default function ArchiveLightbox({
               >
                 {/* Uncropped, Preserved Composition Image */}
                 <img
+                  ref={imgRef}
                   src={activeStory.image}
                   alt={activeStory.imageAlt}
+                  onLoad={handleImageLoad}
                   className="max-w-[85vw] max-h-[52vh] object-contain block shadow-2xl"
                   style={{
                     border: "1px solid rgba(255, 255, 255, 0.05)",
                   }}
                 />
 
-                {/* Story Details below Image */}
-                <div className="w-full max-w-[28rem] mt-6 flex flex-col text-left px-2">
+                {/* Story Details below Image (constrained to the exact rendered width of the photo) */}
+                <div
+                  className="w-full mt-6 flex flex-col text-left px-2"
+                  style={{
+                    maxWidth: imageWidth ? `min(${imageWidth}px, 28rem)` : "28rem",
+                  }}
+                >
                   <h3
                     className="font-cormorant text-white"
                     style={{

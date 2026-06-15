@@ -2,88 +2,99 @@ export interface Poem {
   id: string;
   title: string;
   text: string;
-  metadata: string;
 }
 
 export const poems: Poem[] = [
   {
-    id: "early-chai",
-    title: "Early Chai",
-    text: `Before the morning opens its eyes,
-a flame wakes up beneath the kettle.
-He waits in the blue dust of Varanasi,
-holding a warm clay cup,
-while the world is still asleep.`,
-    metadata: "Varanasi • Winter • Dawn",
+    id: "words",
+    title: "Words?",
+    text: `I learnt the weight of remembering,
+and the ease with which others forget.
+
+Some hands only reach when they're falling,
+never when you're the one sinking.
+
+Still, I pour warmth into half-open doors.`,
   },
   {
-    id: "the-doorway",
-    title: "The Doorway",
-    text: `A rectangle of golden dust,
-she stands in the divide.
-One hand folds a clean linen sleeve,
-the other holds the shadow
-of a door that never closes.`,
-    metadata: "Mumbai • Monsoon • Afternoon",
+    id: "people-like-me",
+    title: "People Like Me",
+    text: `People like me
+love in quiet ways.
+
+We notice when your smile changes,
+when your silence sounds too loud.
+
+And maybe that was my mistake—
+thinking effort could make homes.
+
+Still, I do not know how to love halfway.`,
   },
   {
-    id: "rest",
-    title: "Rest",
-    text: `The cement mixer is quiet now.
-He leans his head against the pillar,
-closing out the metal sun.
-In his palms, he carries
-the weight of houses he will never sleep in.`,
-    metadata: "Delhi • Summer • Midday",
+    id: "maa",
+    title: "Maa",
+    text: `Maybe home
+was never the house.
+
+Maybe home
+was your hands packing my lunch.
+
+Those ordinary mornings
+became the things I cry for at night.`,
   },
   {
-    id: "rainstreaks",
-    title: "Rainstreaks",
-    text: `Press your hand to the cold glass.
-Water flows where the city was.
-A child's finger draws a line
-between what is real,
-and what is only dreamed.`,
-    metadata: "Kolkata • Monsoon • Dusk",
+    id: "to-my-sister",
+    title: "To My Sister",
+    text: `Distance only made ours louder.
+
+And somehow,
+your Wi-Fi always stayed on for me.
+
+The home I can still call
+at any hour.`,
   },
   {
-    id: "weathered-news",
-    title: "Weathered News",
-    text: `Ink spreads on old paper,
-telling stories of countries far away.
-His fingers trace the ink,
-not reading the words,
-but remembering the texture of time.`,
-    metadata: "Chennai • Spring • Morning",
+    id: "to-my-father",
+    title: "To My Father",
+    text: `People say fathers are hard.
+
+Like a coconut shell —
+hard outside.
+
+Soft enough
+to build an entire life
+for his son.`,
   },
   {
-    id: "dawn-market",
-    title: "Dawn Market",
-    text: `He stacks the green melons
-in the quiet hour before the light.
-Each sphere is placed with care,
-as if he were arranging the stars
-in a private sky.`,
-    metadata: "Jaipur • Autumn • Pre-dawn",
+    id: "home",
+    title: "Home",
+    text: `Once I call someone home,
+a part of me
+never really leaves.
+
+Even when they do.`,
   },
   {
-    id: "platform-bench",
-    title: "Platform Bench",
-    text: `The clock is three minutes slow.
-A bag sits between his shoes,
-heavy with things he didn't say.
-The train will arrive,
-but he is already gone.`,
-    metadata: "Howrah • Winter • Night",
+    id: "weight",
+    title: "Weight",
+    text: `Still—
+still I love.
+
+Like a fool.
+Like a wound refusing to scar.
+
+Like someone standing in the rain
+holding flowers
+that have already drowned.`,
   },
   {
-    id: "underpass-song",
-    title: "Underpass Song",
-    text: `A bow scrapes against wood.
-The concrete tunnel echoes
-a melody meant for empty arches.
-He plays not to be heard,
-but to keep the walls from closing in.`,
-    metadata: "Bengaluru • Spring • Night",
+    id: "almost",
+    title: "Almost",
+    text: `Sometimes the saddest thing
+isn't being unloved.
+
+It's being loved —
+just never enough
+to be first.`,
   },
 ];

@@ -102,24 +102,10 @@ export default function PoetryExhibition() {
                   lineHeight: 1.9,
                   color: "var(--color-still-primary)",
                   whiteSpace: "pre-line",
-                  marginBottom: "clamp(2rem, 4.5vw, 3.25rem)",
+                  marginBottom: 0,
                 }}
               >
                 {activePoem.text}
-              </p>
-
-              {/* Poem Location & Time Metadata */}
-              <p
-                className="font-inter"
-                style={{
-                  fontSize: "0.58rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "var(--color-still-faint)",
-                  marginBottom: "clamp(2.5rem, 5vw, 4rem)",
-                }}
-              >
-                {activePoem.metadata}
               </p>
             </motion.div>
           </AnimatePresence>

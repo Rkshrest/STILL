@@ -140,9 +140,9 @@ export default function HeroSection() {
                 ((e.currentTarget as HTMLElement).style.opacity = "1")
               }
             >
-              Begin
-            </span>
-          </Link>
+              Poems
+            </span
+          ></Link>
 
           {/* Secondary — Archive */}
           <Link href="/archive" id="cta-explore-archive">

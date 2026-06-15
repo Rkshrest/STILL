@@ -25,7 +25,7 @@ export default function ArchiveGridItem({ story, onClick }: ArchiveGridItemProps
 
   return (
     <div
-      className="flex flex-col cursor-pointer transition-all duration-300 w-full mb-8 break-inside-avoid"
+      className="flex flex-col cursor-pointer transition-all duration-300 w-full"
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -61,11 +61,11 @@ export default function ArchiveGridItem({ story, onClick }: ArchiveGridItemProps
         animate={{
           height: isHovered ? "auto" : 0,
           opacity: isHovered ? 1 : 0,
-          y: isHovered ? 0 : 6,
-          marginTop: isHovered ? "0.6rem" : "0px",
+          y: isHovered ? 0 : 4,
+          marginTop: isHovered ? "0.5rem" : "0px",
         }}
         transition={{
-          duration: 0.5,
+          duration: 0.4,
           ease: [0.22, 1, 0.36, 1],
         }}
         className="overflow-hidden flex flex-col text-left"
@@ -91,7 +91,7 @@ export default function ArchiveGridItem({ story, onClick }: ArchiveGridItemProps
             fontWeight: 300,
             color: "var(--color-still-muted)",
             lineHeight: 1.4,
-            marginTop: "0.15rem",
+            marginTop: "0.25rem",
             whiteSpace: "pre-line",
           }}
         >
