@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Design Tokens ──────────────────────────────────────────────────────── */
+@theme {
+  /* Colors */
+  --color-still-bg:           #F9F7F4;
+  --color-still-surface:      #F2EFE9;
+  --color-still-border:       #E2DDD6;
+  --color-still-primary:      #1C1C1E;
+  --color-still-muted:        #6E6B66;
+  --color-still-faint:        #A8A39B;
+  --color-still-accent:       #2C2C2E;
+  --color-still-placeholder:  #E8E4DD;
+
+  /* Fonts */
+  --font-cormorant: var(--font-cormorant), "Georgia", serif;
+  --font-inter:     var(--font-inter), "system-ui", sans-serif;
+
+  /* Letter spacings */
+  --tracking-editorial:  0.15em;
+  --tracking-widest:     0.30em;
+
+  /* Custom easing */
+  --ease-cinematic: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Global Resets ──────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-still-bg);
+  color: var(--color-still-primary);
+  font-family: var(--font-inter);
+  font-weight: 300;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Cursor ────────────────────────────────────────────────────────────── */
+* { cursor: default; }
+a, button { cursor: pointer; }
+
+/* ─── Selection ─────────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(28, 28, 30, 0.08);
+  color: var(--color-still-primary);
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-still-border);
+  border-radius: 2px;
+}
+
+/* ─── Typography Classes ─────────────────────────────────────────────────── */
+.font-cormorant {
+  font-family: var(--font-cormorant);
+}
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+/* ─── Placeholder Image Block ────────────────────────────────────────────── */
+.img-placeholder {
+  background-color: var(--color-still-placeholder);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.img-placeholder::after {
+  content: "photograph";
+  font-family: var(--font-inter);
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: lowercase;
+  color: var(--color-still-faint);
+  position: absolute;
+}
+
+/* ─── Link hover utilities (used in Server Components) ───────────────────── */
+.link-faint {
+  color: var(--color-still-faint);
+  transition: color 0.45s ease;
+}
+.link-faint:hover {
+  color: var(--color-still-muted);
+}
+
+.link-muted {
+  color: var(--color-still-muted);
+  transition: color 0.45s ease;
+}
+.link-muted:hover {
+  color: var(--color-still-primary);
 }
