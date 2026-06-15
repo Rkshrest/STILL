@@ -63,6 +63,33 @@ export default function PoetryExhibition() {
         </span>
       </div>
 
+      {/* ── Intro Header (Attribution) ────────────────────────────────── */}
+      <div className="w-full flex flex-col items-center mt-6 mb-2 text-center z-10">
+        <h2
+          className="font-inter"
+          style={{
+            fontSize: "0.58rem",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: "var(--color-still-muted)",
+            fontWeight: 400,
+          }}
+        >
+          Reflections by Shrest Sharma
+        </h2>
+        <p
+          className="font-cormorant italic"
+          style={{
+            fontSize: "clamp(0.72rem, 1.5vw, 0.82rem)",
+            color: "var(--color-still-faint)",
+            marginTop: "0.25rem",
+            letterSpacing: "0.02em",
+          }}
+        >
+          Fragments written between journeys, classrooms, airports, and ordinary days.
+        </p>
+      </div>
+
       {/* ── Main Poetry Frame ─────────────────────────────────────────── */}
       <div className="flex-1 flex flex-col justify-center items-center py-12">
         <div className="w-full max-w-[28rem] flex flex-col items-start px-2">

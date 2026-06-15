@@ -212,6 +212,16 @@ export default function ArchiveLightbox({
                   >
                     {activeStory.creatorReflection}
                   </p>
+
+                  <p
+                    className="font-cormorant italic text-neutral-500 mt-2"
+                    style={{
+                      fontSize: "clamp(0.72rem, 1.1vw, 0.82rem)",
+                      letterSpacing: "0.05em",
+                    }}
+                  >
+                    — Shrest
+                  </p>
                 </div>
               </motion.div>
             </AnimatePresence>

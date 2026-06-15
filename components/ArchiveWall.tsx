@@ -103,6 +103,20 @@ export default function ArchiveWall() {
             Twenty-Five Moments · Quietly Observed
           </p>
 
+          {/* Subtle Attribution */}
+          <p
+            className="font-inter"
+            style={{
+              fontSize: "0.56rem",
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: "var(--color-still-muted)",
+              marginTop: "0.35rem",
+            }}
+          >
+            Photographs & reflections by Shrest Sharma
+          </p>
+
           {/* Thin Rule */}
           <div
             style={{

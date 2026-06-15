@@ -92,6 +92,23 @@ export default function HeroSection() {
           Humans Between Frames
         </motion.p>
 
+        {/* Subtle Attribution */}
+        <motion.p
+          className="font-inter italic"
+          style={{
+            fontSize: "0.58rem",
+            letterSpacing: "0.12em",
+            color: "var(--color-still-muted)",
+            marginTop: "0.5rem",
+            fontWeight: 300,
+          }}
+          variants={fadeIn(0.9)}
+          initial="hidden"
+          animate="visible"
+        >
+          A quiet photography journal by Shrest Sharma
+        </motion.p>
+
         {/* Reflective copy — raised, tighter to subtitle */}
         <motion.p
           className="font-cormorant"
