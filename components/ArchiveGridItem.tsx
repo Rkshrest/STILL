@@ -125,19 +125,7 @@ export default function ArchiveGridItem({
           {story.poeticFragment}
         </p>
 
-        {/* Location & Year Metadata */}
-        <p
-          className="font-inter"
-          style={{
-            fontSize: "0.54rem",
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
-            color: "var(--color-still-faint)",
-            lineHeight: 1,
-          }}
-        >
-          {story.location}
-        </p>
+
 
         {/* Reflection (revealed softly on click/active pin state) */}
         <motion.div
